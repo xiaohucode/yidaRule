@@ -1,10 +1,10 @@
 # yidaRule
-```app目前已支持[漫画][音频][视频],文字阅读暂时不会考虑;```
+```app目前已支持[漫画][音频][视频]```
 
 ```js规则与益达版亦搜类似；js调用部分函数不需要使用异步```
 
 
-全局变量:
+### 全局变量:
 
 ```
 // 上一级的结果
@@ -13,9 +13,16 @@ result
 // 规则基本信息,如host,httpHeaders
 config
 
-// 解析基本参数
-params
+// params是一个解析基本参数,主要保存上级解析信息和一些变量
 
+params.keyWord
+params.pageIndex
+
+// 更多键过滤器
+params.fulters
+
+// 发现页tab索引;后续版本将每个分类单独处理,待删除的
+params.tabIndex
 
 ```
 
@@ -23,7 +30,7 @@ params
 
 
 
-tools方法:
+### tools方法:
 ```
 // 发送http请求
 tools.httpRequest()

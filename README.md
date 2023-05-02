@@ -13,13 +13,13 @@ result
 // 规则基本信息,如host,httpHeaders
 config
 
-// params是一个解析基本参数,主要保存上级解析信息和一些变量
+// params是一个解析基本变量,主要保存上级解析信息和一些变量
 
 params.keyWord
 params.pageIndex
 
 // 更多键过滤器
-params.fulters
+params.filters
 
 // 发现页tab索引;后续版本将每个分类单独处理,待删除的
 params.tabIndex

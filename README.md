@@ -1,4 +1,6 @@
 # yidaRule
+安装包获取:https://github.com/xiaohucode/yidaRule/releases
+
 ```app目前已支持[漫画][音频][视频]```
 
 ```js规则与益达版亦搜类似；js调用部分函数不需要使用异步```

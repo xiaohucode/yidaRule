@@ -23,7 +23,7 @@ params.pageIndex
 // 更多键过滤器
 params.filters
 
-// 发现页tab索引;后续版本将每个分类单独处理,待删除的
+// 发现页tab索引;最新版本已删除,已无意义
 params.tabIndex
 
 ```
@@ -40,6 +40,21 @@ tools.rsaEncrypt(str,key)
 tools.rsaDecrypt(str,key)
 tools.rsaEncryptWithPrivate(str,key)
 tools.rsaDecryptWithPublic(str,key)
+
+// CryptoJS 封装函数
+md5Encode: (str) => CryptoJS.MD5(str).toString().toLowerCase(),
+base64Encode: (str) => CryptoJS.enc.Base64.stringify(CryptoJS.enc.Utf8.parse(str)),
+base64Decode: (str) => CryptoJS.enc.Base64.parse(str).toString(CryptoJS.enc.Utf8),
+sha1Encode: (str) => CryptoJS.SHA1(str).toString(),
+sha224Encode: (str) => CryptoJS.SHA224(str).toString(),
+sha256Encode: (str) => CryptoJS.SHA256(str).toString(),
+sha348Encode: (str) => CryptoJS.SHA384(str).toString(),
+sha512Encode: (str) => CryptoJS.SHA512(str).toString(),
+ripemd160Encode: (str) => CryptoJS.RIPEMD160(str).toString(),
+// 调用方法
+let res = tools.md5Encode('MD5');
+console.log(res);
+
 
 // 1.0.6≥版本生效
 console.log([...])

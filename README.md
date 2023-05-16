@@ -41,7 +41,7 @@ tools.rsaDecrypt(str,key)
 tools.rsaEncryptWithPrivate(str,key)
 tools.rsaDecryptWithPublic(str,key)
 
-// CryptoJS 封装函数
+// CryptoJS 封装方法
 md5Encode: (str) => CryptoJS.MD5(str).toString().toLowerCase(),
 base64Encode: (str) => CryptoJS.enc.Base64.stringify(CryptoJS.enc.Utf8.parse(str)),
 base64Decode: (str) => CryptoJS.enc.Base64.parse(str).toString(CryptoJS.enc.Utf8),

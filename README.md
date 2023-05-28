@@ -1,5 +1,6 @@
 # yidaRule
 打包了个安卓版本,可在Windows11子系统中运行写规则
+
 安装包获取:https://github.com/xiaohucode/yidaRule/releases
 
 

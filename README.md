@@ -3,6 +3,7 @@
 
 安装包获取:https://github.com/xiaohucode/yidaRule/releases
 
+规则下载：https://raw.githubusercontent.com/xiaohucode/yidaRule/main/siteRule/ydsSource.yds
 
 ```app目前已支持[漫画][音频][视频][RSS]```
 

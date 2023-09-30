@@ -1,9 +1,5 @@
 # yidaRule
-打包了个安卓版本,可在Windows11子系统中运行写规则
-
 安装包获取:https://github.com/xiaohucode/yidaRule/releases
-
-规则下载：https://raw.githubusercontent.com/xiaohucode/yidaRule/main/siteRule/ydsSource.yds
 
 ```app目前已支持[漫画][音频][视频][RSS]```
 
@@ -36,6 +32,23 @@ params.tabIndex
 
 ### tools方法:
 ```
+// css选择器
+tools.xpathSelector(html,css)
+
+// xpath选择器
+tools.xpathSelector(html,xpath)
+
+// RSA加解密
+tools.rsaEncrypt(string,publicKey);
+tools.rsaDecrypt(string,privateKey);
+
+// RSA加解密(私钥加密-公钥解密)
+tools.rsaEncryptWithPrivate(string,publicKey);
+tools.rsaDecryptWithPublic(string,privateKey);
+
+// 启动一个本地http服务器,content可传递自定义内容,成功将返回一个可访问的本地url
+tools.httpServer(content,suffix);
+
 // 发送http请求
 tools.httpRequest()
 tools.http.post(url,body,headers)
@@ -65,4 +78,59 @@ console.log([...])
 console.warn([...])
 console.error([...])
 
+```
+
+
+### 视频嗅探
+支持开启WebView嗅探视频地址
+```
+{
+    "url":"视频播放地址",
+    "webview":true,                      // 非空则开启webview访问
+    "sourceRegex":"(.m3u8|.mp4)",        // 嗅探正则表达式
+    "notSourceRegex":"(url=|m3u8.js)",   // 过滤嗅探到url
+    "webviewJs":"当webview执行完毕后需要运行的脚本,必须提供返回值",
+    "webviewJsDelay":5000,               // 脚本执行延迟,单位为毫妙,默认为1秒
+}
+```
+
+
+### 请求信息
+支持单行
+
+```
+/vod-so/$keyWord----------$pageIndex---.html
+```
+
+请求对象
+
+gbk
+```
+{
+    "url": "/modules/article/search.php?searchkey=$keyWord&searchtype=articlename&page=$pageIndex",
+    "encoding": "gbk"
+}
+```
+get-headers
+```
+{
+    "url": "/modules/article/search.php?searchkey=$keyWord&searchtype=articlename&page=$pageIndex",
+    "headers":{
+        "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6",
+        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36"
+    }
+}
+```
+post-headers
+```
+{
+    "url": "/modules/article/search.php",
+    "method": "POST",
+    "body": "searchkey=$keyWord&searchtype=articlename",
+    "headers": {
+        "Content-Type": "application/x-www-form-urlencoded",
+        "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6",
+        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36"
+    }
+}
 ```

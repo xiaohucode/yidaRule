@@ -56,10 +56,6 @@ tools.httpServer(content,suffix);
 tools.httpRequest()
 tools.http.post(url,body,headers)
 tools.http.get(url,headers)
-tools.rsaEncrypt(str,key)
-tools.rsaDecrypt(str,key)
-tools.rsaEncryptWithPrivate(str,key)
-tools.rsaDecryptWithPublic(str,key)
 
 // CryptoJS 封装方法
 md5Encode: (str) => CryptoJS.MD5(str).toString().toLowerCase(),

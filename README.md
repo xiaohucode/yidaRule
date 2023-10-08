@@ -4,9 +4,9 @@
 规则导入：https://github.com/xiaohucode/yidaRule/raw/main/siteRule/ydsSource.yds
 
 
-```app目前已支持[漫画][音频][视频][RSS]```
+app目前已支持[漫画][音频][视频][RSS]
 
-```js规则与益达版亦搜类似；js调用部分函数不需要使用异步```
+js规则与益达版亦搜类似；js调用部分函数不需要使用异步
 
 
 ### 全局变量:
@@ -36,7 +36,7 @@ params.tabIndex
 ### tools方法:
 ```
 // css选择器
-tools.xpathSelector(html,css)
+tools.cssSelector(html,css)
 
 // xpath选择器
 tools.xpathSelector(html,xpath)
@@ -46,8 +46,8 @@ tools.rsaEncrypt(string,publicKey);
 tools.rsaDecrypt(string,privateKey);
 
 // RSA加解密(私钥加密-公钥解密)
-tools.rsaEncryptWithPrivate(string,publicKey);
-tools.rsaDecryptWithPublic(string,privateKey);
+tools.rsaEncryptWithPrivate(string,privateKey);
+tools.rsaDecryptWithPublic(string,publicKey);
 
 // 启动一个本地http服务器,content可传递自定义内容,成功将返回一个可访问的本地url
 tools.httpServer(content,suffix);

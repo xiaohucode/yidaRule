@@ -133,3 +133,32 @@ post-headers
     }
 }
 ```
+
+# 封面解密JS
+    需要编写JS代码,注意!!!不需要以@js:开头
+    其中[coverParam]变量提供图片url与图片数据
+    返回值结尾必须是json字符串,看下边例子
+
+
+
+```
+// coverParam.type      ;类型,为string数据 'list'|'detail'|'content'
+                        ;'list'     表示搜索列表或发现列表的封面
+                        ;'detail'   表示详情页的封面
+                        ;'content'  正文的图片
+// coverParam.bytes     ;图片数据为List<int>
+// coverParam.url       ;图片加载Url
+
+
+let a = "my2ecret782ecret";
+let r = new Uint8Array(param.body);
+let s = r, i = CryptoJS.enc.Utf8.parse(a), l = CryptoJS.lib.WordArray.create(s), d, f = o(CryptoJS.AES.decrypt({
+    ciphertext: l
+}, i, {
+    iv: i,
+    padding: CryptoJS.pad.Pkcs7
+}));
+
+return JSON.stringify({ bytes: Array.from(f) });
+
+```

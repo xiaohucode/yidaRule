@@ -100,6 +100,40 @@ console.error([...])
 
 请求对象
 
+```
+{
+    "url":"https://www.baidu.com/",         // 请求URL
+    "forbidredirect":true,                  // 禁止重定向
+    "headers":config.httpHeaders,           // 请求头
+    "h2":true,                              // 是否用http2
+    "body":"a=1",                           // post数据
+    "method":"POST",                        // 请求模式,默认GET
+    "cachetime":"3600",                     // 请求缓存时间,单位为妙
+    "webView":true,                         // 非空就表示启用webview访问完整网页
+    "sourceRegex":".m3u8|.mp4",             // 正则表达式,启用webview后需要嗅探匹配资源链接
+    "notSourceRegex":"url=",                // 正则表达式,与[sourceRegex]一起使用,匹配非资源链接
+    "webviewJs":"let result = '你好';result",// webView运行完成时需要执行的js代码,必须提供返回值
+    "webviewJsDelay":1000,                  // webviewJs执行延迟,单位为毫秒
+}
+```
+
+禁止重定向
+```
+{
+    "url": "/modules/article/search.php?searchkey=$keyWord&searchtype=articlename&page=$pageIndex",
+    "forbidredirect": true
+}
+```
+
+
+使用http2请求
+```{
+    "url": "/modules/article/search.php?searchkey=$keyWord&searchtype=articlename&page=$pageIndex",
+    "h2": true
+}
+```
+
+
 gbk
 ```
 {

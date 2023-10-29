@@ -1,9 +1,9 @@
 # yidaRule
 安装包获取:https://github.com/xiaohucode/yidaRule/releases
 
-规则导入：https://github.com/xiaohucode/yidaRule/raw/main/siteRule/ydsSource.yds
+规则导入：https://github.com/xiaohucode/yidaRule/raw/main/siteRule/ydSource.yds
 
-app目前已支持[漫画][音频][视频][RSS]
+app目前已支持[漫画][音频][视频][RSS][小说]
 
 
 ### 全局变量:
@@ -11,6 +11,12 @@ app目前已支持[漫画][音频][视频][RSS]
 ```
 // 上一级的结果
 result
+
+// 请求信息,在请求完成后可获取到
+params.request
+
+// 响应信息,在请求完成后可获取到
+params.response
 
 // 规则基本信息,如host,httpHeaders
 config
@@ -182,7 +188,7 @@ post-headers
 
 
 let a = "my2ecret782ecret";
-let r = new Uint8Array(param.bytes);
+let r = new Uint8Array(coverParam.bytes);
 let s = r, i = CryptoJS.enc.Utf8.parse(a), l = CryptoJS.lib.WordArray.create(s), d, f = o(CryptoJS.AES.decrypt({
     ciphertext: l
 }, i, {

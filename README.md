@@ -29,7 +29,7 @@ params.pageIndex
 // 更多键过滤器
 params.filters
 
-// 发现页tab索引;最新版本已删除,已无意义
+// 发现页tab索引;
 params.tabIndex
 
 ```
@@ -74,6 +74,9 @@ ripemd160Encode: (str) => CryptoJS.RIPEMD160(str).toString(),
 let res = tools.md5Encode('MD5');
 console.log(res);
 
+// 存取本地缓存
+await tools.setCache(strKey, obj)
+await tools.getCache(strKey)
 
 // 1.0.6≥版本生效
 console.log([...])

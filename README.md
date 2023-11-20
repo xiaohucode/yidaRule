@@ -28,4 +28,4 @@
 <img src="screenshot/11.png" width="200"> <img src="screenshot/12.png" width="200"> <img src="screenshot/13.png" width="200"> 
 
 # 视频播放 
-<img src="screenshot/14.png" width="200"> <img src="screenshot/15.png" width="200"> 
+<img src="screenshot/14.png" width="200"> <img src="screenshot/15.png" width="200"> <img src="screenshot/21.png" width="200"> <img src="screenshot/22.png" width="500"> <img src="screenshot/23.png" width="500"> 

@@ -1,6 +1,8 @@
 # 益达app
 
-<a href="yuedu://importonline?src=https://github.com/xiaohucode/yidaRule/raw/main/siteRule/ydSource.yds" type="button">一键导入规则</a>
+<a href="yida://importonline?src=https://github.com/xiaohucode/yidaRule/raw/main/siteRule/ydSource.yds" type="button">一键导入规则</a>
+
+[yida://importonline?src=https://github.com/xiaohucode/yidaRule/raw/main/siteRule/ydSource.yds](yida://importonline?src=https://github.com/xiaohucode/yidaRule/raw/main/siteRule/ydSource.yds)
 
 安装包获取:https://github.com/xiaohucode/yidaRule/releases
 

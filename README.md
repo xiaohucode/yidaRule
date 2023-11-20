@@ -1,12 +1,12 @@
 # 益达app
 
-<a href="yuedu://importonline?src=https://github.com/xiaohucode/yidaRule/raw/main/siteRule/ydSource.yds" type="button" class="layui-btn layui-btn-fluid">一键导入规则</a>
+<a href="yuedu://importonline?src=https://github.com/xiaohucode/yidaRule/raw/main/siteRule/ydSource.yds" type="button">一键导入规则</a>
 
 安装包获取:https://github.com/xiaohucode/yidaRule/releases
 
 规则导入：https://github.com/xiaohucode/yidaRule/raw/main/siteRule/ydSource.yds
 
-规则说明文档: [https//github.com/xiaohucode/yidaRule/Document.md](https//github.com/xiaohucode/yidaRule/Document.md)
+规则说明文档: [https://github.com/xiaohucode/yidaRule/blob/main/Document.md](https://github.com/xiaohucode/yidaRule/blob/main/Document.md)
 
 # 界面
 <img src="screenshot/1.png" width="200"> 

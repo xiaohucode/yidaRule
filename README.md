@@ -1,5 +1,9 @@
 # 益达app
 
+<img src="screenshot/logo.png" width="600">
+
+# flutter + rust 开发! 跨平台
+
 <a href="yida://importonline?src=https://github.com/xiaohucode/yidaRule/raw/main/siteRule/ydSource.yds" type="button">一键导入规则</a>
 
 [yida://importonline?src=https://github.com/xiaohucode/yidaRule/raw/main/siteRule/ydSource.yds](yida://importonline?src=https://github.com/xiaohucode/yidaRule/raw/main/siteRule/ydSource.yds)

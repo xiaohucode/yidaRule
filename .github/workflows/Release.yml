@@ -31,7 +31,7 @@ jobs:
         with:
           repository: xiaohucode/yida
           path: 'yida'
-          token: ${{ secrets.YOUR_GITHUB_TOKEN }}
+          token: ${{ secrets.GH_PAT }}
     
       - name: Check release
         run: |

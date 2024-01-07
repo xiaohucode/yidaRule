@@ -33,11 +33,6 @@ jobs:
           path: 'yida'
           token: ${{ secrets.GH_PAT }}
     
-      - name: Check release
-        run: |
-          cd yida/ci
-          cargo run --release --bin check-release
-          
       - name: Cargo cache
         uses: actions/cache@v3
         with:
@@ -101,7 +96,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
         with:
+          repository: xiaohucode/yida
           path: 'yida'
+          token: ${{ secrets.GH_PAT }}
 
       - name: Cargo cache
         uses: actions/cache@v3

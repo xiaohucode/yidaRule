@@ -26,6 +26,11 @@ jobs:
     name: Check release
     runs-on: ubuntu-latest
     steps:
+      - name: Check release
+        run: |
+          cd yida/ci
+          cargo run --release --bin check-release
+          
       - name: Cargo cache
         uses: actions/cache@v3
         with:
@@ -45,7 +50,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
         with:
-          repository: ${{ github.event.inputs.repo }}
+          repository: https://github.com/xiaohucode/yida.git
+          token: ${{ secrets.YOUR_GITHUB_TOKEN }}
           path: 'yida'
 
       - name: Cargo ci build cache

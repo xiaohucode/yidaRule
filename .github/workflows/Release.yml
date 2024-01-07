@@ -26,6 +26,13 @@ jobs:
     name: Check release
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          repository: https://github.com/xiaohucode/yida.git
+          token: ${{ secrets.YOUR_GITHUB_TOKEN }}
+          path: 'yida'
+    
       - name: Check release
         run: |
           cd yida/ci
@@ -46,13 +53,6 @@ jobs:
         with:
           toolchain: ${{ env.RUST_TOOLCHAIN }}
           override: true
-
-      - name: Checkout
-        uses: actions/checkout@v3
-        with:
-          repository: https://github.com/xiaohucode/yida.git
-          token: ${{ secrets.YOUR_GITHUB_TOKEN }}
-          path: 'yida'
 
       - name: Cargo ci build cache
         uses: actions/cache@v3

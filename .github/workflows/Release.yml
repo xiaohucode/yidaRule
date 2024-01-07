@@ -238,7 +238,7 @@ jobs:
           mkdir Payload
           mv ios/iphoneos/Runner.app Payload/
           sh ../scripts/thin-payload.sh Payload
-          zip -r -9 nosign.ipa Payload
+          zip -r -9 release.ipa Payload
           cd ..
 
       - name: Install LLVM and Clang (Linux/Android)

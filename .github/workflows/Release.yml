@@ -63,7 +63,7 @@ jobs:
 
       - name: Check release
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
         run: |
           cd yida/ci
           cargo run --release --bin check-release
@@ -130,7 +130,7 @@ jobs:
       - id: check_asset
         name: Check asset
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
         run: |
           cd yida/ci
           cargo run --release --bin check-asset

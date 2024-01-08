@@ -74,10 +74,10 @@ jobs:
         config:
           # - target: linux
           #   host: ubuntu-latest
-          - target: windows
-            host: windows-latest
-          - target: macos
-            host: macos-13
+          # - target: windows
+          #   host: windows-latest
+          # - target: macos
+          #   host: macos-13
           - target: ios
             host: macos-13
           - target: android-arm32

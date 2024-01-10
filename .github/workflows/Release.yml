@@ -9,7 +9,7 @@ env:
   NDK_VERSION: 25.2.9519653
   FLUTTER_VERSION: '3.18.0-0.2.pre'
   FLUTTER_CHANNEL: 'beta'
-  FRB_VERSION: 'v2.0.0-dev.13'
+  FRB_VERSION: 'v2.0.0-dev.9'
 
 jobs:
 
@@ -78,10 +78,10 @@ jobs:
           #   host: windows-latest
           # - target: macos
           #   host: macos-13
-          - target: ios
-            host: macos-13
-          - target: android-arm32
-            host: ubuntu-latest
+          # - target: ios
+          #   host: macos-13
+          # - target: android-arm32
+          #   host: ubuntu-latest
           - target: android-arm64
             host: ubuntu-latest
           # - target: android-x86_64
@@ -110,11 +110,11 @@ jobs:
             ~/.cargo/git/db/
           key: ${{ runner.os }}-cargo-
           
-      - name: Install Windows10-Sdk
-        if: matrix.config.target == 'windows'
-        uses: GuillaumeFalourd/setup-windows10-sdk-action@v1.12
-        with:
-          sdk-version: 22621
+      # - name: Install Windows10-Sdk
+      #   if: matrix.config.target == 'windows'
+      #   uses: GuillaumeFalourd/setup-windows10-sdk-action@v1.12
+      #   with:
+      #     sdk-version: 22621
           
       - name: Install rust toolchain
         uses: actions-rs/toolchain@v1
@@ -233,6 +233,7 @@ jobs:
           cd yida
           flutter pub get
           flutter pub upgrade
+          flutter_rust_bridge_codegen generate 
           flutter build ios --target=lib/main2.dart --obfuscate --split-debug-info=./symbol --no-simulator --no-codesign --release
           cd build
           rm -rf Payload

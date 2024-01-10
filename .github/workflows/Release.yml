@@ -151,15 +151,15 @@ jobs:
           java-version: 11
           distribution: 'zulu'
 
-      - name: Setup android tools (Android)
-        if: steps.check_asset.outputs.skip_build != 'true' && ( matrix.config.target == 'android-arm32' || matrix.config.target == 'android-arm64' || matrix.config.target == 'android-x86_64' )
-        uses: maxim-lobanov/setup-android-tools@v1
-        with:
-          packages: |
-            platform-tools
-              platforms;android-33
-              build-tools;33.0.0
-              ndk;${{ env.NDK_VERSION }}
+      # - name: Setup android tools (Android)
+      #   if: steps.check_asset.outputs.skip_build != 'true' && ( matrix.config.target == 'android-arm32' || matrix.config.target == 'android-arm64' || matrix.config.target == 'android-x86_64' )
+      #   uses: maxim-lobanov/setup-android-tools@v1
+      #   with:
+      #     packages: |
+      #       platform-tools
+      #         platforms;android-33
+      #         build-tools;33.0.0
+      #         ndk;${{ env.NDK_VERSION }}
             
 
       - name: Check bridge

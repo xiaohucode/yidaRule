@@ -232,6 +232,7 @@ jobs:
           rustup target install aarch64-apple-ios
           cd yida
           flutter pub get
+          flutter pub upgrade
           flutter build ios --target=lib/main2.dart --obfuscate --split-debug-info=./symbol --no-simulator --no-codesign --release
           cd build
           rm -rf Payload
@@ -265,6 +266,8 @@ jobs:
           cd ..
           rustup target install aarch64-linux-android
           cd yida
+          flutter pub get
+          flutter pub upgrade
           flutter build apk --target=lib/main2.dart --target-platform android-arm64 --obfuscate --split-debug-info=./symbol --split-per-abi
 
       - name: Install rust target and build (Android-arm32)
@@ -284,6 +287,8 @@ jobs:
           cd ..
           rustup target install armv7-linux-androideabi
           cd yida
+          flutter pub get
+          flutter pub upgrade
           flutter build apk --target=lib/main2.dart --target-platform android-arm --obfuscate --split-debug-info=./symbol --split-per-abi
 
       - name: Install rust target and build (Android-x86_64)

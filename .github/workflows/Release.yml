@@ -78,10 +78,10 @@ jobs:
           #   host: windows-latest
           # - target: macos
           #   host: macos-13
-          # - target: ios
-          #   host: macos-13
-          # - target: android-arm32
-          #   host: ubuntu-latest
+          - target: ios
+            host: macos-13
+          - target: android-arm32
+            host: ubuntu-latest
           - target: android-arm64
             host: ubuntu-latest
           # - target: android-x86_64

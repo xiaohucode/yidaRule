@@ -143,6 +143,24 @@ jobs:
         uses: maxim-lobanov/setup-xcode@v1
         with:
           xcode-version: '14.3.1'
+          
+      - name: Setup java (Android)
+        if: steps.check_asset.outputs.skip_build != 'true' && ( matrix.config.target == 'android-arm32' || matrix.config.target == 'android-arm64' || matrix.config.target == 'android-x86_64' )
+        uses: actions/setup-java@v3
+        with:
+          java-version: 11
+          distribution: 'zulu'
+
+      - name: Setup android tools (Android)
+        if: steps.check_asset.outputs.skip_build != 'true' && ( matrix.config.target == 'android-arm32' || matrix.config.target == 'android-arm64' || matrix.config.target == 'android-x86_64' )
+        uses: maxim-lobanov/setup-android-tools@v1
+        with:
+          packages: |
+            platform-tools
+            platforms;android-33
+            build-tools;33.0.0
+            ndk;${{ env.NDK_VERSION }}
+            
 
       - name: Check bridge
         if: steps.check_asset.outputs.skip_build != 'true'
@@ -200,23 +218,6 @@ jobs:
         if: steps.check_asset.outputs.skip_build != 'true' && ( matrix.config.target == 'android-arm32' || matrix.config.target == 'android-arm64' || matrix.config.target == 'android-x86_64' )
         run: |
           cargo install cargo-ndk
-
-      - name: Setup java (Android)
-        if: steps.check_asset.outputs.skip_build != 'true' && ( matrix.config.target == 'android-arm32' || matrix.config.target == 'android-arm64' || matrix.config.target == 'android-x86_64' )
-        uses: actions/setup-java@v3
-        with:
-          java-version: 11
-          distribution: 'zulu'
-
-      - name: Setup android tools (Android)
-        if: steps.check_asset.outputs.skip_build != 'true' && ( matrix.config.target == 'android-arm32' || matrix.config.target == 'android-arm64' || matrix.config.target == 'android-x86_64' )
-        uses: maxim-lobanov/setup-android-tools@v1
-        with:
-          packages: |
-            platform-tools
-            platforms;android-33
-            build-tools;33.0.0
-            ndk;${{ env.NDK_VERSION }}
 
       - name: Cargo native build cache
         if: steps.check_asset.outputs.skip_build != 'true'

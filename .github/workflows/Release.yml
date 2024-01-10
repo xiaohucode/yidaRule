@@ -93,12 +93,12 @@ jobs:
       TARGET: ${{ matrix.config.target }}
 
     steps:
-      # - name: Checkout
-      #   uses: actions/checkout@v3
-      #   with:
-      #     repository: xiaohucode/yida
-      #     path: 'yida'
-      #     token: ${{ secrets.GH_PAT }}
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          repository: xiaohucode/yida
+          path: 'yida'
+          token: ${{ secrets.GH_PAT }}
 
       - name: Cargo cache
         uses: actions/cache@v3

@@ -76,8 +76,8 @@ jobs:
           #   host: ubuntu-latest
           # - target: windows
           #   host: windows-latest
-          # - target: macos
-          #   host: macos-13
+          - target: macos
+            host: macos-13
           - target: ios
             host: macos-13
           - target: android-arm32
@@ -226,15 +226,20 @@ jobs:
           path: |
             yida/rust/target/
           key: ${{ runner.os }}-cargo-native_target-${{ matrix.config.target }}
-
+          
+      - name: Flutter Generate 
+        if: steps.check_asset.outputs.skip_build != 'true' && ( matrix.config.target != 'macos')
+        run: |
+          cd yida
+          flutter pub get
+          flutter pub upgrade
+          flutter_rust_bridge_codegen generate
+          
       - name: Install rust target and build (ios)
         if: steps.check_asset.outputs.skip_build != 'true' && ( matrix.config.target == 'ios')
         run: |
           rustup target install aarch64-apple-ios
           cd yida
-          flutter pub get
-          flutter pub upgrade
-          flutter_rust_bridge_codegen generate 
           flutter build ios --target=lib/main2.dart --obfuscate --split-debug-info=./symbol --no-simulator --no-codesign --release
           cd build
           rm -rf Payload
@@ -244,12 +249,6 @@ jobs:
           zip -r -9 release.ipa Payload
           cd ..
 
-      - name: Install LLVM and Clang (Linux/Android)
-        if: steps.check_asset.outputs.skip_build != 'true' && ( matrix.config.target == 'android-arm32' || matrix.config.target == 'android-arm64' || matrix.config.target == 'android-x86_64' ) && !startsWith(matrix.config.flutter_version, '2')
-        run: |
-          cd yida
-          flutter pub get
-          flutter_rust_bridge_codegen generate 
 
       - name: Install rust target and build (Android-arm64)
         if: steps.check_asset.outputs.skip_build != 'true' && ( matrix.config.target == 'android-arm64')
@@ -268,8 +267,6 @@ jobs:
           cd ..
           rustup target install aarch64-linux-android
           cd yida
-          flutter pub get
-          flutter pub upgrade
           flutter build apk --target=lib/main2.dart --target-platform android-arm64 --obfuscate --split-debug-info=./symbol --split-per-abi
 
       - name: Install rust target and build (Android-arm32)
@@ -289,8 +286,6 @@ jobs:
           cd ..
           rustup target install armv7-linux-androideabi
           cd yida
-          flutter pub get
-          flutter pub upgrade
           flutter build apk --target=lib/main2.dart --target-platform android-arm --obfuscate --split-debug-info=./symbol --split-per-abi
 
       - name: Install rust target and build (Android-x86_64)

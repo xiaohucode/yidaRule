@@ -228,7 +228,7 @@ jobs:
           key: ${{ runner.os }}-cargo-native_target-${{ matrix.config.target }}
           
       - name: Flutter Generate 
-        if: steps.check_asset.outputs.skip_build != 'true' && ( matrix.config.target != 'macos')
+        if: steps.check_asset.outputs.skip_build != 'true'
         run: |
           cd yida
           flutter pub get

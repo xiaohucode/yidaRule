@@ -9,7 +9,7 @@ env:
   NDK_VERSION: 25.2.9519653
   FLUTTER_VERSION: '3.18.0-0.2.pre'
   FLUTTER_CHANNEL: 'beta'
-  FRB_VERSION: 'v2.0.0-dev.20'
+  FRB_VERSION: 'v2.0.0-dev.21'
 
 jobs:
 
@@ -232,7 +232,6 @@ jobs:
         run: |
           cd yida
           flutter pub get
-          flutter pub upgrade
           flutter_rust_bridge_codegen generate
           
       - name: Install rust target and build (ios)

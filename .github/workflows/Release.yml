@@ -7,9 +7,9 @@ env:
   LLVM_VERSION: '10.0'
   RUST_TOOLCHAIN: nightly-2023-10-31
   NDK_VERSION: 25.2.9519653
-  FLUTTER_VERSION: '3.18.0-0.2.pre'
+  FLUTTER_VERSION: '3.20.0-1.2.pre'
   FLUTTER_CHANNEL: 'beta'
-  FRB_VERSION: 'v2.0.0-dev.21'
+  FRB_VERSION: 'v2.0.0-dev.25'
 
 jobs:
 

@@ -232,7 +232,6 @@ jobs:
         run: |
           cd yida
           flutter pub get
-          flutter_rust_bridge_codegen generate
           
       - name: Install rust target and build (ios)
         if: steps.check_asset.outputs.skip_build != 'true' && ( matrix.config.target == 'ios')
@@ -252,18 +251,6 @@ jobs:
       - name: Install rust target and build (Android-arm64)
         if: steps.check_asset.outputs.skip_build != 'true' && ( matrix.config.target == 'android-arm64')
         run: |
-          # export ANDROID_NDK_HOME=$ANDROID_HOME/ndk/${{ env.NDK_VERSION }}
-          # export ANDROID_NDK_ROOT=$ANDROID_NDK_HOME
-          # PATH=$ANDROID_NDK_ROOT/toolchains/llvm/prebuilt/linux-x86_64/bin:$ANDROID_NDK_ROOT/toolchains/arm-linux-androideabi-4.9/prebuilt/linux-x86_64/bin:$PATH
-          # wget https://www.openssl.org/source/openssl-3.2.0.tar.gz
-          # tar -xzvf openssl-3.2.0.tar.gz
-          # cd openssl-3.2.0
-          # ./Configure android-arm64
-          # make
-          # sudo make install
-          # export OPENSSL_DIR=/usr/local
-          # export OPENSSL_STATIC=1
-          # cd ..
           sudo apt-get install pkg-config libssl-dev
           rustup target install aarch64-linux-android
           cd yida
@@ -272,18 +259,6 @@ jobs:
       - name: Install rust target and build (Android-arm32)
         if: steps.check_asset.outputs.skip_build != 'true' && ( matrix.config.target == 'android-arm32')
         run: |
-          # export ANDROID_NDK_HOME=$ANDROID_HOME/ndk/${{ env.NDK_VERSION }}
-          # export ANDROID_NDK_ROOT=$ANDROID_NDK_HOME
-          # PATH=$ANDROID_NDK_ROOT/toolchains/llvm/prebuilt/linux-x86_64/bin:$ANDROID_NDK_ROOT/toolchains/arm-linux-androideabi-4.9/prebuilt/linux-x86_64/bin:$PATH
-          # wget https://www.openssl.org/source/openssl-3.2.0.tar.gz
-          # tar -xzvf openssl-3.2.0.tar.gz
-          # cd openssl-3.2.0
-          # ./Configure android-arm
-          # make
-          # sudo make install
-          # export OPENSSL_DIR=/usr/local
-          # export OPENSSL_STATIC=1
-          # cd ..
           sudo apt-get install pkg-config libssl-dev
           rustup target install armv7-linux-androideabi
           cd yida
@@ -292,18 +267,6 @@ jobs:
       - name: Install rust target and build (Android-x86_64)
         if: steps.check_asset.outputs.skip_build != 'true' && ( matrix.config.target == 'android-x86_64')
         run: |
-          # export ANDROID_NDK_HOME=$ANDROID_HOME/ndk/${{ env.NDK_VERSION }}
-          # export ANDROID_NDK_ROOT=$ANDROID_NDK_HOME
-          # PATH=$ANDROID_NDK_ROOT/toolchains/llvm/prebuilt/linux-x86_64/bin:$ANDROID_NDK_ROOT/toolchains/arm-linux-androideabi-4.9/prebuilt/linux-x86_64/bin:$PATH
-          # wget https://www.openssl.org/source/openssl-3.2.0.tar.gz
-          # tar -xzvf openssl-3.2.0.tar.gz
-          # cd openssl-3.2.0
-          # ./Configure android-x86_64
-          # make
-          # sudo make install
-          # export OPENSSL_DIR=/usr/local
-          # export OPENSSL_STATIC=1
-          # cd ..
           sudo apt-get install pkg-config libssl-dev
           rustup target install x86_64-linux-android
           cd yida

@@ -7,8 +7,8 @@ env:
   LLVM_VERSION: '10.0'
   RUST_TOOLCHAIN: nightly-2023-10-31
   NDK_VERSION: 25.2.9519653
-  FLUTTER_VERSION: '3.20.0-1.2.pre'
-  FLUTTER_CHANNEL: 'beta'
+  FLUTTER_VERSION: '3.20.0-16.0.pre'
+  FLUTTER_CHANNEL: 'master'
   FRB_VERSION: 'v2.0.0-dev.25'
 
 jobs:
@@ -72,10 +72,10 @@ jobs:
       fail-fast: false
       matrix:
         config:
-          # - target: linux
-          #   host: ubuntu-latest
-          # - target: windows
-          #   host: windows-latest
+          - target: linux
+            host: ubuntu-latest
+          - target: windows
+            host: windows-latest
           - target: macos
             host: macos-13
           - target: ios

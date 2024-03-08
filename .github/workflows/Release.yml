@@ -110,11 +110,11 @@ jobs:
             ~/.cargo/git/db/
           key: ${{ runner.os }}-cargo-
           
-      # - name: Install Windows10-Sdk
-      #   if: matrix.config.target == 'windows'
-      #   uses: GuillaumeFalourd/setup-windows10-sdk-action@v1.12
-      #   with:
-      #     sdk-version: 22621
+      - name: Install Windows10-Sdk
+        if: matrix.config.target == 'windows'
+        uses: GuillaumeFalourd/setup-windows10-sdk-action@v1.12
+        with:
+          sdk-version: 22621
           
       - name: Install rust toolchain
         uses: actions-rs/toolchain@v1
@@ -228,7 +228,7 @@ jobs:
           key: ${{ runner.os }}-cargo-native_target-${{ matrix.config.target }}
           
       - name: Flutter Generate 
-        if: steps.check_asset.outputs.skip_build != 'true'
+        if: steps.check_asset.outputs.skip_build != 'true' && matrix.config.target != 'windows'
         run: |
           cd yida
           flutter pub get
@@ -282,7 +282,6 @@ jobs:
           mv appimagetool-x86_64.AppImage appimagetool
           cd yida
           flutter pub get
-          flutter_rust_bridge_codegen generate 
           flutter config --enable-linux-desktop
           flutter build linux --release
           mv build/linux/x64/release/bundle/{yida,AppRun}
@@ -292,10 +291,11 @@ jobs:
 
       - name: build (windows)
         if: steps.check_asset.outputs.skip_build != 'true' && matrix.config.target == 'windows'
+        env:
+          PUB_CACHE: 'D:\a\pub'
         run: |
           cd yida
           flutter pub get
-          flutter_rust_bridge_codegen generate 
           flutter config --enable-windows-desktop
           flutter build windows --target=lib/main2.dart
           cd build/windows/x64/runner/Release
@@ -307,7 +307,6 @@ jobs:
         run: |
           cd yida
           flutter pub get
-          flutter_rust_bridge_codegen generate 
           rustup target install x86_64-apple-darwin
           rustup target install aarch64-apple-darwin
           flutter config --enable-macos-desktop

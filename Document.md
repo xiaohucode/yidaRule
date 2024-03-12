@@ -1,3 +1,4 @@
+
 ### 全局变量:
 
 ```
@@ -36,13 +37,22 @@ await tools.cssSelector(html,css)
 // xpath选择器
 await tools.xpathSelector(html,xpath)
 
+// RSAPadding定义
+
+RSAPadding.NoPadding
+RSAPadding.PKCS1
+RSAPadding.OAEP
+
+
 // RSA加解密
-await tools.rsaEncrypt(string,publicKey);
-await tools.rsaDecrypt(string,privateKey);
+// algorithm 参数可空,默认为 RSAPadding.PKCS1
+
+await tools.rsaEncrypt(string, publicKey, algorithm);
+await tools.rsaDecrypt(string, privateKey, algorithm);
 
 // RSA加解密(私钥加密-公钥解密)
-await tools.rsaEncryptWithPrivate(string,privateKey);
-await tools.rsaDecryptWithPublic(string,publicKey);
+await tools.rsaEncryptWithPrivate(string, privateKey, algorithm);
+await tools.rsaDecryptWithPublic(string, publicKey, algorithm);
 
 // 启动一个本地http服务器,content可传递自定义内容,成功将返回一个可访问的本地url
 await tools.httpServer(content,suffix);
@@ -65,6 +75,41 @@ ripemd160Encode: (str) => CryptoJS.RIPEMD160(str).toString(),
 // 调用方法
 let res = tools.md5Encode('MD5');
 console.log(res);
+
+// utf8 编码
+utf8Encode(str);
+// utf8 解码
+utf8Decode(utftext);
+// 对Array数据进行 utf8 编码
+utf8EncodeWithArray(bytes);
+// 对Array数据进行 utf8 解码
+utf8DecodeWithArray(bytes);
+
+
+
+
+// 解压zip
+
+await zipDecode(bytes, (name, isFile, content)=>{}, passWord);
+
+// 参数1:zip数据,需要传递Array类型
+// 参数2:一个回调函数->共三个参数
+//                            name:文件名
+//                            isFile:true表示是否为文件
+//                            content:文件内容ArrayBuffer类型
+//                            返回值:如果提供文件名将返回文件内容
+// 参数3:解压密码
+
+// 示例：
+
+let decodeData = await tools.zipDecode(data, (name, isFile, content) => {
+    // 命中文件
+    if (name.endsWith(".html")) {
+        return name;
+    }
+    return null;
+}, passWord);
+
 
 // 存取本地缓存
 await tools.setCache(strKey, obj)

@@ -74,8 +74,8 @@ jobs:
         config:
           - target: linux
             host: ubuntu-latest
-          - target: windows
-            host: windows-latest
+          # - target: windows
+          #   host: windows-latest
           - target: macos
             host: macos-13
           - target: ios
@@ -110,11 +110,11 @@ jobs:
             ~/.cargo/git/db/
           key: ${{ runner.os }}-cargo-
           
-      - name: Install Windows10-Sdk
-        if: matrix.config.target == 'windows'
-        uses: GuillaumeFalourd/setup-windows10-sdk-action@v1.12
-        with:
-          sdk-version: 22621
+      # - name: Install Windows10-Sdk
+      #   if: matrix.config.target == 'windows'
+      #   uses: GuillaumeFalourd/setup-windows10-sdk-action@v1.12
+      #   with:
+      #     sdk-version: 22621
           
       - name: Install rust toolchain
         uses: actions-rs/toolchain@v1

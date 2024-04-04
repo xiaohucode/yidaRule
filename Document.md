@@ -29,8 +29,37 @@ params.tabIndex
 
 ### 规则内置CryptoJS,可直接使用
 
+
+### cookie方法
+```
+// 获取 cookies
+let cookies = await cookie.getCookie(url);
+
+// 获取单条cookie
+let cookie = await cookie.getCookieByKey(url，key);
+
+// 删除cookie
+await cookie.removeCookie(url);
+```
+
 ### tools方法:
 ```
+// 显示一个输入验证码窗口
+await tools.getVerificationCode(imgUrl,title);
+
+// 弹窗提示
+tools.toast("hello!");
+
+// 使用内置浏览器打开链接，可用于获取验证码 手动验证网站防爬,
+// 返回值为Cookies
+await tools.startBrowser(url);
+
+// 将文本转换为简体
+await tools.t2s(text);
+
+// 将文本转换为繁体
+await tools.s2t(text);
+
 // css选择器
 await tools.cssSelector(html,css)
 
@@ -56,6 +85,9 @@ await tools.rsaDecryptWithPublic(string, publicKey, algorithm);
 
 // 启动一个本地http服务器,content可传递自定义内容,成功将返回一个可访问的本地url
 await tools.httpServer(content,suffix);
+
+// 暂停一段时间,单位为秒
+await sleep(sec)
 
 // 发送http请求
 await tools.httpRequest()

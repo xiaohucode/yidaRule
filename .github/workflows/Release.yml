@@ -221,6 +221,7 @@ jobs:
         if: steps.check_asset.outputs.skip_build != 'true' && matrix.config.target != 'windows'
         run: |
           cd yida
+          dart run ffigen --config config.yaml
           flutter pub get
           
       - name: Install rust target and build (ios)
@@ -285,6 +286,7 @@ jobs:
           PUB_CACHE: 'D:\a\pub'
         run: |
           cd yida
+          dart run ffigen --config config-windows.yaml
           flutter pub get
           flutter config --enable-windows-desktop
           flutter build windows --target=lib/main2.dart

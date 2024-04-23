@@ -8,7 +8,7 @@
 
 [yida://importonline?src=https://github.com/xiaohucode/yidaRule/raw/main/siteRule/ydSource.yds](yida://importonline?src=https://github.com/xiaohucode/yidaRule/raw/main/siteRule/ydSource.yds)
 
-支持磁力链接，magnet协议可使用app解析(版本≥1.1.24)只支持mpv内核播放
+支持磁力链接，magnet协议可使用app解析(版本≥1.1.24)
 
 安装包获取:https://github.com/xiaohucode/yidaRule/releases
 

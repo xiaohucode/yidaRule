@@ -222,7 +222,6 @@ jobs:
         run: |
           cd yida
           flutter pub get
-          
           dart run ffigen --config config.yaml
           
       - name: Install rust target and build (ios)
@@ -287,8 +286,8 @@ jobs:
           PUB_CACHE: 'D:\a\pub'
         run: |
           cd yida
-          dart run ffigen --config config-windows.yaml
           flutter pub get
+          dart run ffigen --config config.yaml
           flutter config --enable-windows-desktop
           flutter build windows --target=lib/main2.dart
           Compress-Archive -Path build/windows/x64/runner/Release -DestinationPath build/windows.zip

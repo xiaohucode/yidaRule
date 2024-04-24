@@ -72,7 +72,7 @@ jobs:
       matrix:
         config:
           - target: linux
-            host: ubuntu-latest
+            host: ubuntu-20.04
           - target: windows
             host: windows-latest
           - target: macos
@@ -80,9 +80,9 @@ jobs:
           - target: ios
             host: macos-13
           - target: android-arm32
-            host: ubuntu-latest
+            host: ubuntu-20.04
           - target: android-arm64
-            host: ubuntu-latest
+            host: ubuntu-20.04
           # - target: android-x86_64
           #   host: ubuntu-latest
 

@@ -23,7 +23,7 @@ jobs:
 
   check_release:
     name: Check release
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -72,7 +72,7 @@ jobs:
       matrix:
         config:
           - target: linux
-            host: ubuntu-20.04
+            host: ubuntu-latest
           - target: windows
             host: windows-latest
           - target: macos
@@ -80,9 +80,9 @@ jobs:
           - target: ios
             host: macos-13
           - target: android-arm32
-            host: ubuntu-20.04
+            host: ubuntu-latest
           - target: android-arm64
-            host: ubuntu-20.04
+            host: ubuntu-latest
           # - target: android-x86_64
           #   host: ubuntu-latest
 

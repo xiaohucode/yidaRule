@@ -10,6 +10,11 @@
 
 支持磁力链接，magnet协议可使用app解析(版本≥1.1.24)
 
+修改磁力缓冲目录(Windows)
+
+<img src="screenshot/btserver-env.png" width="500">
+
+
 安装包获取:https://github.com/xiaohucode/yidaRule/releases
 
 规则导入：https://github.com/xiaohucode/yidaRule/raw/main/siteRule/ydSource.yds

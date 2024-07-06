@@ -6,9 +6,9 @@ on:
 env:
   LLVM_VERSION: '10.0'
   RUST_TOOLCHAIN: nightly-2023-10-31
-  FLUTTER_VERSION: '3.20.0-16.0.pre'
+  FLUTTER_VERSION: '8b7cd85b985b21cfc8b851545c31240c7e360fae'
   FLUTTER_CHANNEL: 'master'
-  FRB_VERSION: 'v2.0.0-dev.25'
+  FRB_VERSION: 'v2.0.0'
 
 jobs:
 

@@ -184,6 +184,8 @@ console.error([...])
     "forbidredirect":true,                                      // 禁止重定向
     "headers":{"Referer":"https://www.baidu.com/"},             // 请求头
     "h2":true,                                                  // 是否用http2
+    "encoding":"gbk",                                           // 请求编码
+    "responseDecode":"gbk",                                     // 响应解码.一般不写,默认通过响应头获取
     "body":"a=1",                                               // post数据
     "method":"POST",                                            // 请求模式,默认GET
     "cachetime":"3600",                                         // 请求缓存时间,单位为秒

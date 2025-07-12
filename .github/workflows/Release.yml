@@ -5,10 +5,10 @@ on:
 
 env:
   LLVM_VERSION: '10.0'
-  RUST_TOOLCHAIN: nightly-2023-10-31
-  FLUTTER_VERSION: '3.20.0-16.0.pre'
-  FLUTTER_CHANNEL: 'master'
-  FRB_VERSION: 'v2.0.0-dev.25'
+  RUST_TOOLCHAIN: nightly-2025-02-26
+  FLUTTER_VERSION: '3.32.6'
+  FLUTTER_CHANNEL: 'stable'
+  FRB_VERSION: 'v2.11.1'
 
 jobs:
 
@@ -29,7 +29,7 @@ jobs:
         uses: actions/checkout@v3
         with:
           repository: xiaohucode/yida_app
-          path: 'yida'
+          path: 'yida_app'
           token: ${{ secrets.GH_PAT }}
     
       - name: Cargo cache
@@ -52,14 +52,14 @@ jobs:
         uses: actions/cache@v3
         with:
           path: |
-            yida/ci/target/
+            yida_app/ci/target/
           key: ${{ runner.os }}-cargo-ci_target
 
       - name: Check release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          cd yida/ci
+          cd yida_app/ci
           cargo run --release --bin check-release
 
 
@@ -96,7 +96,7 @@ jobs:
         uses: actions/checkout@v3
         with:
           repository: xiaohucode/yida_app
-          path: 'yida'
+          path: 'yida_app'
           token: ${{ secrets.GH_PAT }}
 
       - name: Cargo cache
@@ -120,7 +120,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: |
-            yida/ci/target/
+            yida_app/ci/target/
           key: ${{ runner.os }}-cargo-ci_target
 
       - id: check_asset
@@ -128,7 +128,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          cd yida/ci
+          cd yida_app/ci
           cargo run --release --bin check-asset
 
       - name: Setup java (Android)
@@ -214,13 +214,13 @@ jobs:
         uses: actions/cache@v3
         with:
           path: |
-            yida/rust/target/
+            yida_app/rust/target/
           key: ${{ runner.os }}-cargo-native_target-${{ matrix.config.target }}
           
       - name: Flutter Generate 
         if: steps.check_asset.outputs.skip_build != 'true' && matrix.config.target != 'windows'
         run: |
-          cd yida
+          cd yida_app
           flutter pub get
           dart run ffigen --config config.yaml
           
@@ -228,7 +228,7 @@ jobs:
         if: steps.check_asset.outputs.skip_build != 'true' && ( matrix.config.target == 'ios')
         run: |
           rustup target install aarch64-apple-ios
-          cd yida
+          cd yida_app
           flutter build ios --target=lib/main2.dart --obfuscate --split-debug-info=./symbol --no-simulator --no-codesign --release
           cd build
           rm -rf Payload
@@ -244,7 +244,7 @@ jobs:
         run: |
           sudo apt-get install pkg-config libssl-dev
           rustup target install aarch64-linux-android
-          cd yida
+          cd yida_app
           flutter build apk --target=lib/main2.dart --target-platform android-arm64 --obfuscate --split-debug-info=./symbol --split-per-abi
 
       - name: Install rust target and build (Android-arm32)
@@ -252,7 +252,7 @@ jobs:
         run: |
           sudo apt-get install pkg-config libssl-dev
           rustup target install armv7-linux-androideabi
-          cd yida
+          cd yida_app
           flutter build apk --target=lib/main2.dart --target-platform android-arm --obfuscate --split-debug-info=./symbol --split-per-abi
 
       - name: Install rust target and build (Android-x86_64)
@@ -260,7 +260,7 @@ jobs:
         run: |
           sudo apt-get install pkg-config libssl-dev
           rustup target install x86_64-linux-android
-          cd yida
+          cd yida_app
           flutter build apk --target=lib/main2.dart --target-platform android-x64 --obfuscate --split-debug-info=./symbol --split-per-abi
 
       - name: Install dependencies and build (Linux)
@@ -271,11 +271,11 @@ jobs:
           curl -JOL https://github.com/AppImage/AppImageKit/releases/download/continuous/appimagetool-x86_64.AppImage
           chmod a+x appimagetool-x86_64.AppImage
           mv appimagetool-x86_64.AppImage appimagetool
-          cd yida
+          cd yida_app
           flutter pub get
           flutter config --enable-linux-desktop
           flutter build linux --release
-          mv build/linux/x64/release/bundle/{yida,AppRun}
+          mv build/linux/x64/release/bundle/{yida_app,AppRun}
           cp linux/appimage/* build/linux/x64/release/bundle/
           ../appimagetool build/linux/x64/release/bundle/
           mv *.AppImage build/linux.AppImage
@@ -285,7 +285,7 @@ jobs:
         env:
           PUB_CACHE: 'D:\a\pub'
         run: |
-          cd yida
+          cd yida_app
           flutter pub get
           dart run ffigen --config config.yaml
           flutter config --enable-windows-desktop
@@ -295,7 +295,7 @@ jobs:
       - name: Build (macos)
         if: steps.check_asset.outputs.skip_build != 'true' && matrix.config.target == 'macos'
         run: |
-          cd yida
+          cd yida_app
           flutter pub get
           rustup target install x86_64-apple-darwin
           rustup target install aarch64-apple-darwin
@@ -303,9 +303,9 @@ jobs:
           flutter build macos --target=lib/main2.dart
           cd build
           mkdir appimage
-          mv macos/Build/Products/Release/yida.app appimage/
+          mv macos/Build/Products/Release/yida_app.app appimage/
           ln -sf /Applications appimage/
-          hdiutil create -volname yida -srcfolder appimage -ov -format UDBZ macos.dmg
+          hdiutil create -volname yida_app -srcfolder appimage -ov -format UDBZ macos.dmg
           cd ..
 
       - name: Cargo ci build cache
@@ -313,7 +313,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: |
-            yida/ci/target/
+            yida_app/ci/target/
           key: ${{ runner.os }}-cargo-ci_target
 
       - name: Upload Asset (All)
@@ -321,5 +321,5 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          cd yida/ci
+          cd yida_app/ci
           cargo run --release --bin upload-asset

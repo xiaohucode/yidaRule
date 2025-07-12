@@ -95,7 +95,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
         with:
-          repository: xiaohucode/yida
+          repository: xiaohucode/yida_app
           path: 'yida'
           token: ${{ secrets.GH_PAT }}
 

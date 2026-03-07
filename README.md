@@ -8,6 +8,10 @@
 
 [yida://importonline?src=https://github.com/xiaohucode/yidaRule/raw/main/siteRule/ydSource.yds](yida://importonline?src=https://github.com/xiaohucode/yidaRule/raw/main/siteRule/ydSource.yds)
 
+# 最近更新
+爱听书:https://github.com/xiaohucode/yidaRule/raw/refs/heads/main/siteRule/%E6%8E%A8%E7%89%B9%E6%9F%A5%E7%9C%8B%E5%99%A8.yds
+漫蛙:https://github.com/xiaohucode/yidaRule/raw/refs/heads/main/siteRule/%E6%BC%AB%E8%9B%99APP.yds
+
 支持磁力链接，magnet协议可使用app解析(版本≥1.1.24)
 
 修改磁力缓冲目录(Windows)

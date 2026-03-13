@@ -261,7 +261,6 @@ post-headers
 
 let a = "my2ecret782ecret", i = CryptoJS.enc.Utf8.parse(a), decrypt = CryptoJS.AES.decrypt(coverParam.b64, i, {
     iv: i,
-    mode: CryptoJS.mode.ECB,
     padding: CryptoJS.pad.Pkcs7
 });
 

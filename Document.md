@@ -259,12 +259,11 @@ post-headers
 // coverParam.url       ;图片加载Url
 
 
-let a = "my2ecret782ecret";
-let r = new Uint8Array(coverParam.bytes);
-let s = r, i = CryptoJS.enc.Utf8.parse(a), decrypt = CryptoJS.AES.decrypt(coverParam.b64, i, {
+let a = "my2ecret782ecret", i = CryptoJS.enc.Utf8.parse(a), decrypt = CryptoJS.AES.decrypt(coverParam.b64, i, {
     iv: i,
+    mode: CryptoJS.mode.ECB,
     padding: CryptoJS.pad.Pkcs7
-})
+});
 
 // 结果转Uint8Array
 let sigBytes = decrypt.sigBytes;

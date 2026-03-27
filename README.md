@@ -9,14 +9,25 @@
 [yida://importonline?src=https://github.com/xiaohucode/yidaRule/raw/main/siteRule/ydSource.yds](yida://importonline?src=https://github.com/xiaohucode/yidaRule/raw/main/siteRule/ydSource.yds)
 
 # 最近更新
-爱听书:https://github.com/xiaohucode/yidaRule/raw/refs/heads/main/siteRule/%E6%8E%A8%E7%89%B9%E6%9F%A5%E7%9C%8B%E5%99%A8.yds
 
-漫蛙:https://github.com/xiaohucode/yidaRule/raw/refs/heads/main/siteRule/%E6%BC%AB%E8%9B%99APP.yds
+爱听书:https://raw.githubusercontent.com/xiaohucode/yidaRule/refs/heads/main/siteRule/%E7%88%B1%E5%90%AC%E4%B9%A6app-2.yds
+
+推特查看器:https://raw.githubusercontent.com/xiaohucode/yidaRule/refs/heads/main/siteRule/%E6%8E%A8%E7%89%B9%E6%9F%A5%E7%9C%8B%E5%99%A8.yds
+
+漫蛙:https://raw.githubusercontent.com/xiaohucode/yidaRule/refs/heads/main/siteRule/%E6%BC%AB%E8%9B%99APP.yds
 
 这个规则要求APP版本≥1.3.3 
-听友FM:https://github.com/xiaohucode/yidaRule/raw/refs/heads/main/siteRule/%E5%90%AC%E5%8F%8BFM.yds
+
+听友FM:https://raw.githubusercontent.com/xiaohucode/yidaRule/refs/heads/main/siteRule/%E5%90%AC%E5%8F%8BFM.yds
+
+可可影视:https://raw.githubusercontent.com/xiaohucode/yidaRule/refs/heads/main/siteRule/video/%E5%8F%AF%E5%8F%AF%E5%BD%B1%E8%A7%86.yds
+
+missav:https://raw.githubusercontent.com/xiaohucode/yidaRule/refs/heads/main/siteRule/video/missav.yds
+
+missav:https://raw.githubusercontent.com/xiaohucode/yidaRule/refs/heads/main/siteRule/video/%E6%B1%A4%E4%B8%8D%E7%83%ADAPP.yds
 
 
+#
 支持磁力链接，magnet协议可使用app解析(版本≥1.1.24)
 
 修改磁力缓冲目录(Windows)

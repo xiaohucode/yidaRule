@@ -13,6 +13,10 @@
 
 漫蛙:https://github.com/xiaohucode/yidaRule/raw/refs/heads/main/siteRule/%E6%BC%AB%E8%9B%99APP.yds
 
+这个规则要求APP版本≥1.3.3 
+听友FM:https://github.com/xiaohucode/yidaRule/raw/refs/heads/main/siteRule/%E5%90%AC%E5%8F%8BFM.yds
+
+
 支持磁力链接，magnet协议可使用app解析(版本≥1.1.24)
 
 修改磁力缓冲目录(Windows)

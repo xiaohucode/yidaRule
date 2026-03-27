@@ -24,7 +24,7 @@
 
 missav:https://raw.githubusercontent.com/xiaohucode/yidaRule/refs/heads/main/siteRule/video/missav.yds
 
-missav:https://raw.githubusercontent.com/xiaohucode/yidaRule/refs/heads/main/siteRule/video/%E6%B1%A4%E4%B8%8D%E7%83%ADAPP.yds
+汤不热APP:https://raw.githubusercontent.com/xiaohucode/yidaRule/refs/heads/main/siteRule/video/%E6%B1%A4%E4%B8%8D%E7%83%ADAPP.yds
 
 
 #

@@ -83,6 +83,55 @@ await tools.rsaDecrypt(string, privateKey, algorithm);
 await tools.rsaEncryptWithPrivate(string, privateKey, algorithm);
 await tools.rsaDecryptWithPublic(string, publicKey, algorithm);
 
+// Xchacha20-Poly1305Aead 加解密
+
+await tools.xchacha20Poly1305AeadDecrypt(
+    cipher:             Uint8Array | ArrayBuffer | Array,
+    key:                Uint8Array | ArrayBuffer | Array,
+    nonce:              Uint8Array | ArrayBuffer | Array,
+    mac:                Uint8Array | ArrayBuffer | Array, 
+    keyStreamIndex?:    Uint8Array | ArrayBuffer | Array,               // 可空
+    aad?:               Uint8Array | ArrayBuffer | Array,               // 可空
+) -> Uint8Array
+
+await tools.xchacha20Poly1305AeadEecrypt(
+    cipher:             Uint8Array | ArrayBuffer | Array,
+    key:                Uint8Array | ArrayBuffer | Array,
+    keyStreamIndex?:    Uint8Array | ArrayBuffer | Array,               // 可空
+    aad?:               Uint8Array | ArrayBuffer | Array,               // 可空
+) -> Object { cipher: Uint8Array, nonce: Uint8Array, mac: Uint8Array}
+
+
+// Aes\Gcm 加解密
+
+await tools.aesGcmDecrypt(
+        cipher:             Uint8Array | ArrayBuffer | Array,
+        key:                Uint8Array | ArrayBuffer | Array,
+        nonce:              Uint8Array | ArrayBuffer | Array,
+        mac:                Uint8Array | ArrayBuffer | Array, 
+        aad?:               Uint8Array | ArrayBuffer | Array,               // 可空
+    ) -> Uint8Array
+
+await tools.aesGcmEncrypt(
+        cipher:             Uint8Array | ArrayBuffer | Array,
+        key:                Uint8Array | ArrayBuffer | Array,
+        aad?:               Uint8Array | ArrayBuffer | Array,               // 可空
+    ) ->  Object { cipher: Uint8Array, nonce: Uint8Array, mac: Uint8Array}
+
+
+// 十六进制转换
+Hex.encode(Uint8Array/ArrayBuffer/Array) -> string
+Hex.decode(string) -> Uint8Array
+
+
+// utf8编码
+let u8Array = new TextEncoder().encode("你好");
+console.log(u8Array); // Uint8Array([228, 189, 160, 229, 165, 189])
+// utf8解码
+let str = new TextDecoder().decode(u8Array);
+console.log(str); // "你好"
+
+
 // 启动一个本地http服务器,content可传递自定义内容,成功将返回一个可访问的本地url
 await tools.httpServer(content,suffix);
 
@@ -107,6 +156,7 @@ ripemd160Encode: (str) => CryptoJS.RIPEMD160(str).toString(),
 // 调用方法
 let res = tools.md5Encode('MD5');
 console.log(res);
+
 
 // utf8 编码
 utf8Encode(str);
@@ -272,6 +322,6 @@ let result = new Uint8Array(sigBytes);
 for (let i = 0; i < sigBytes; i++) {
     result[i] = (words[i >>> 2] >>> (24 - (i % 4) * 8)) & 0xff;
 }
-return result.buffer;
+return result;
 
 ```

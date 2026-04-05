@@ -6,13 +6,13 @@
 result
 
 // 请求信息,在请求完成后可获取到
-params.request
+params.request => {"url": "https://www.xxxx.com", "headers": object, "method": "POST"}
 
 // 响应信息,在请求完成后可获取到
-params.response
+params.response => {"bytes": Uint8Array, "headers": object, "statusCode": 200}
 
 // 规则基本信息,如host,httpHeaders
-config
+config => {"host": "", "loginUrl": "", "httpHeaders": object}
 
 // params是一个解析基本变量,主要保存上级解析信息和一些变量
 
@@ -41,6 +41,26 @@ let cookie = await cookie.getCookieByKey(url，key);
 // 删除cookie
 await cookie.removeCookie(url);
 ```
+
+### js原生支持
+```
+// 十六进制转换
+Hex.encode(string) -> string
+Hex.decode(string) -> string
+
+// base64
+atob(string) -> string
+btoa(string) -> string
+
+
+// utf8编码
+let u8Array = new TextEncoder().encode("你好");
+console.log(u8Array); // Uint8Array([228, 189, 160, 229, 165, 189])
+// utf8解码
+let str = new TextDecoder().decode(u8Array);
+console.log(str); // "你好"
+```
+
 
 ### tools方法:
 ```
@@ -119,19 +139,6 @@ await tools.aesGcmEncrypt(
     ) ->  Object { cipher: Uint8Array, nonce: Uint8Array, mac: Uint8Array}
 
 
-// 十六进制转换
-Hex.encode(Uint8Array/ArrayBuffer/Array) -> string
-Hex.decode(string) -> Uint8Array
-
-
-// utf8编码
-let u8Array = new TextEncoder().encode("你好");
-console.log(u8Array); // Uint8Array([228, 189, 160, 229, 165, 189])
-// utf8解码
-let str = new TextDecoder().decode(u8Array);
-console.log(str); // "你好"
-
-
 // 启动一个本地http服务器,content可传递自定义内容,成功将返回一个可访问的本地url
 await tools.httpServer(content,suffix);
 
@@ -166,9 +173,6 @@ utf8Decode(utftext);
 utf8EncodeWithArray(bytes);
 // 对Array数据进行 utf8 解码
 utf8DecodeWithArray(bytes);
-
-
-
 
 // 解压zip
 
@@ -298,18 +302,18 @@ post-headers
 # 封面解密JS
     需要编写JS代码,注意!!!不需要以@js:开头
     其中[coverParam]变量提供图片url与图片数据
-    返回值结尾必须ArrayBuffer或Array,看下边例子
+    返回值必须是Uint8Array或ArrayBuffer,看下边例子
 
 ```
 // coverParam.type      ;类型,为string数据 'list'|'detail'|'content'
                         ;'list'     表示搜索列表或发现列表的封面
                         ;'detail'   表示详情页的封面
                         ;'content'  正文的图片
-// coverParam.b64       ;图片数据为已经base64编码的文本数据
+// coverParam.bytes     ;原始图片数据Uint8Array类型
 // coverParam.url       ;图片加载Url
 
 
-let a = "my2ecret782ecret", i = CryptoJS.enc.Utf8.parse(a), decrypt = CryptoJS.AES.decrypt(coverParam.b64, i, {
+let a = "my2ecret782ecret", i = CryptoJS.enc.Utf8.parse(a), w = CryptoJS.lib.WordArray.create(coverParam.bytes), decrypt = CryptoJS.AES.decrypt({ ciphertext: w }, i, {
     iv: i,
     mode: CryptoJS.mode.CBC,
     padding: CryptoJS.pad.Pkcs7
@@ -322,6 +326,8 @@ let result = new Uint8Array(sigBytes);
 for (let i = 0; i < sigBytes; i++) {
     result[i] = (words[i >>> 2] >>> (24 - (i % 4) * 8)) & 0xff;
 }
+
+// 直接返回Uint8Array或ArrayBuffer
 return result;
 
 ```

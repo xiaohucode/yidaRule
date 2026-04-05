@@ -26,6 +26,7 @@ missav:https://raw.githubusercontent.com/xiaohucode/yidaRule/refs/heads/main/sit
 
 汤不热APP:https://raw.githubusercontent.com/xiaohucode/yidaRule/refs/heads/main/siteRule/video/%E6%B1%A4%E4%B8%8D%E7%83%ADAPP.yds
 
+小火山APP:https://raw.githubusercontent.com/xiaohucode/yidaRule/refs/heads/main/siteRule/video/小火山APP.yds
 
 #
 支持磁力链接，magnet协议可使用app解析(版本≥1.1.24)
@@ -36,8 +37,6 @@ missav:https://raw.githubusercontent.com/xiaohucode/yidaRule/refs/heads/main/sit
 
 
 安装包获取:https://github.com/xiaohucode/yidaRule/releases
-
-规则导入：https://github.com/xiaohucode/yidaRule/raw/main/siteRule/ydSource.yds
 
 规则说明文档: [https://github.com/xiaohucode/yidaRule/blob/main/Document.md](https://github.com/xiaohucode/yidaRule/blob/main/Document.md)
 

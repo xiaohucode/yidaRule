@@ -45,8 +45,8 @@ await cookie.removeCookie(url);
 ### js原生支持
 ```
 // 十六进制转换
-Hex.encode(string) -> string
-Hex.decode(string) -> string
+Hex.encode(Uint8Array) -> string
+Hex.decode(string) -> Uint8Array
 
 // base64
 atob(string) -> string

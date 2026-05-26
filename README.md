@@ -16,7 +16,7 @@
 
 漫蛙:https://raw.githubusercontent.com/xiaohucode/yidaRule/refs/heads/main/siteRule/%E6%BC%AB%E8%9B%99APP.yds
 
-这个规则要求APP版本≥1.3.3 
+听友FM规则要求APP版本≥1.3.3 ，第一次使用需要登录游客,规则会自动储存TOKEN
 
 听友FM:https://raw.githubusercontent.com/xiaohucode/yidaRule/refs/heads/main/siteRule/%E5%90%AC%E5%8F%8BFM.yds
 
